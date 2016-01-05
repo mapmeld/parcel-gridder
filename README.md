@@ -25,6 +25,10 @@ How parcel-gridder should work:
 parcelgridder source.geojson
 ```
 
+## Python files
+
+Including some experimental Python files to do more / similar work
+
 ## License
 
 Open source, MIT License
