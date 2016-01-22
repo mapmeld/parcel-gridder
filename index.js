@@ -53,6 +53,25 @@ function makeParcelGrid(gj, callback) {
       }
     }
 
+    function nextSquare() {
+      // advance to next square (usually the next column)
+      x++;
+      if (x >= 5) {
+        // now go to the next row and first column
+        y++;
+        x = 0;
+      }
+      if (y >= 5) {
+        // finished, do callback if possible
+        if (typeof callback === 'function') {
+          return callback();
+        }
+        return;
+      }
+      // move to next square
+      doSquare(x, y);
+    }
+
     console.log('finishing square ' + [x,y].join(','));
     if (msgj.features.length) {
       console.log(msgj.features.length);
@@ -60,24 +79,10 @@ function makeParcelGrid(gj, callback) {
         if (err) {
           return callback(err);
         }
-
-        // advance to next square (usually the next column)
-        x++;
-        if (x >= 5) {
-          // now go to the next row and first column
-          y++;
-          x = 0;
-        }
-        if (y >= 5) {
-          // finished, do callback if possible
-          if (typeof callback === 'function') {
-            return callback();
-          }
-          return;
-        }
-        // move to next square
-        doSquare(x, y);
+        nextSquare();
       });
+    } else {
+      nextSquare();
     }
   }
 
