@@ -1,7 +1,15 @@
 #! /usr/bin/env node
 
-var fs = require('fs');
+const fs = require('fs');
+const program = require('commander');
+
 var makeParcelGrid = require('./index.js');
+
+program
+  .version('1.1.1')
+  .arguments('<geojsonFile>')
+  .option('-a --minArea <area>', 'minimum area in square meters', /(.*)/, 0)
+  .parse(process.argv);
 
 if (process.argv.length < 3) {
   console.log('specify a file: parcelgridder test.geojson')
@@ -21,6 +29,6 @@ if (process.argv.length < 3) {
       } else {
         console.log('done');
       }
-    });
+    }, program.minArea);
   });
 }

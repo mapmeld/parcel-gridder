@@ -21,8 +21,21 @@ How parcel-gridder should work:
 
 ## Usage
 
+### Command Line
+
 ```bash
 parcelgridder source.geojson
+
+# set a min area in square meters, calculated by TurfJS
+parcelgridder source.geojson --minArea 10
+```
+
+### NodeJS
+
+```javascript
+makeParcelGrid(GeoJSONobject, function(err) {
+  
+}, minArea);
 ```
 
 ## Python files

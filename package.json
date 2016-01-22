@@ -1,12 +1,13 @@
 {
   "name": "parcel-gridder",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Separates GeoJSON shape into 5x5 grid",
   "main": "index.js",
   "bin": {
     "parcelgridder": "cli.js"
   },
   "dependencies": {
+    "commander": "^2.9.0",
     "turf": "^2.0.2"
   },
   "devDependencies": {},

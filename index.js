@@ -1,7 +1,7 @@
 var fs = require('fs');
 var turf = require('turf');
 
-function makeParcelGrid(gj, callback) {
+function makeParcelGrid(gj, callback, minArea) {
 
   // get box surrounding entire feature collection
   var box = turf.envelope(gj).geometry.coordinates[0];
@@ -42,9 +42,13 @@ function makeParcelGrid(gj, callback) {
         if (gj.features[f].geometry.type === "Polygon") {
           // check if the feature is inside the square
           if (turf.intersect(envelopes[f], mySquare)) {
-            msgj.features.push(gj.features[f]);
             // setting to zero prevents this feature from being re-added
             envelopes[f] = 0;
+
+            if (!minArea || (turf.area(gj.features[f]) >= minArea)) {
+              // allow minArea option
+              msgj.features.push(gj.features[f]);
+            }
           }
         } else {
           console.log('feature is not a polygon');
