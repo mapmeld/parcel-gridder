@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
-    "turf": "^2.0.2"
+    "turf": "^3.0.14"
   },
   "devDependencies": {},
   "scripts": {
