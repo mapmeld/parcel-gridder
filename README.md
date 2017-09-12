@@ -1,5 +1,7 @@
 # parcel-gridder
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mapmeld/parcel-gridder.svg)](https://greenkeeper.io/)
+
 <img src="http://i.imgur.com/QETumnz.png"/>
 
 ## Requirements
